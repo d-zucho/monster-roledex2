@@ -26,6 +26,7 @@ class App extends Component {
       )
   }
 
+  // event listener method for text input in search field
   addFilterText = (e) => {
     this.setState(() => {
       return {
