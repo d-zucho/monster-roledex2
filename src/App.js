@@ -57,6 +57,8 @@ class App extends Component {
           filteredMonsters.map((monster) => (
             <h1 key={monster.id}>{monster.name}</h1>
           ))
+
+          // DISPLAY CARD LIST COMPONENT HERE
         }
       </div>
     )
