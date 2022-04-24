@@ -1,5 +1,6 @@
 import { Component } from 'react'
-import CardList from './components/CardList'
+import CardList from './components/card-list/CardList.component'
+import FilterTextBox from './components/FilterTextBox'
 
 class App extends Component {
   constructor() {
@@ -47,20 +48,18 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <input
-          type='search'
-          className='search-box'
-          placeholder='Search Monster'
-          onChange={this.addFilterText}
-        />
-        {/* {
+        <FilterTextBox onChange={this.addFilterText} />
+        {
           // display filtered monsters
           filteredMonsters.map((monster) => (
             <h1 key={monster.id}>{monster.name}</h1>
           ))
-        } */}
+        }
 
-        <CardList filteredMonsters={filteredMonsters} />
+        <CardList
+          monsters={this.state.monsters}
+          // onChange={this.addFilterText}
+        />
       </div>
     )
   }
