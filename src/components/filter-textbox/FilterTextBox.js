@@ -1,20 +1,16 @@
 import { Component } from 'react'
+import './fileterTextbox.styles.css'
 
 class FilterTextBox extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
-    const { addFilterText } = this.props
     console.log('from filterTextBox')
     console.log(this.props)
     return (
       <input
         type='search'
-        className='search-box'
+        className='filterText-box'
         placeholder='Search Monster'
-        onChange={addFilterText}
+        onChange={this.props.onChangeHandler}
       />
     )
   }
