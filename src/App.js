@@ -49,9 +49,8 @@ class App extends Component {
 
     return (
       <div className='App'>
-        {/* <FilterTextBox onChange={this.addFilterText} /> */}
+        <h1>Monster's Rolodex</h1>
 
-        {/* this needs to be in FilterTextBox ComponentFile */}
         <FilterTextBox
           type='search'
           className='search-box'

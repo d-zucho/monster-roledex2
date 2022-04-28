@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import MonsterCard from '../monster-card/MonsterCard'
 
 class CardList extends Component {
   render() {
@@ -7,7 +8,7 @@ class CardList extends Component {
     return (
       <section>
         {monsters.map((monster) => (
-          <h1 key={monster.id}>{monster.name}</h1>
+          <MonsterCard monster={monster} />
         ))}
       </section>
     )
