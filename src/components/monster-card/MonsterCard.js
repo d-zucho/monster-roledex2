@@ -1,4 +1,4 @@
-import React from 'react'
+import './card.styles.css'
 
 const MonsterCard = ({ monster }) => {
   return (
@@ -9,7 +9,6 @@ const MonsterCard = ({ monster }) => {
       />
       <h2 key={monster.id}>{monster.name}</h2>
       <p>{monster.email}</p>
-      <small>{monster.phone}</small>
     </div>
   )
 }
