@@ -15,3 +15,7 @@
 .monster-card:hover {
   transform: scale(1.05);
 }
+
+.img {
+  margin: 12px 0;
+}

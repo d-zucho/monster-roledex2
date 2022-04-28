@@ -7,11 +7,11 @@ class CardList extends Component {
     const { monsters } = this.props
     console.log(monsters)
     return (
-      <section className='monsterCards-section'>
+      <div className='monsterCards-section'>
         {monsters.map((monster) => (
-          <MonsterCard monster={monster} />
+          <MonsterCard key={monster.id} monster={monster} />
         ))}
-      </section>
+      </div>
     )
   }
 }

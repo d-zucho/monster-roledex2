@@ -1,7 +1,9 @@
 .monsterCards-section {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  width: 90vw;
+  width: 85vw;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  min-height: 0;
+  min-width: 0;
+  grid-gap: 20px;
 }

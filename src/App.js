@@ -49,7 +49,7 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <h1>Monster's Rolodex</h1>
+        <h1 className='main-title'>Monster's Rolodex</h1>
 
         <FilterTextBox
           type='search'
