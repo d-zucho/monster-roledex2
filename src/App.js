@@ -1,66 +1,49 @@
-import { Component } from 'react'
+import { useEffect, useState } from 'react'
 import CardList from './components/card-list/CardList.component'
 import FilterTextBox from './components/filter-textbox/FilterTextBox'
 import './App.css'
 
-class App extends Component {
-  constructor() {
-    super()
+const App = () => {
+  const [monsters, setMonsters] = useState([])
+  const [filterText, setFiltertext] = useState('')
+  const [filteredMonsters, setFilterMonsters] = useState(monsters)
 
-    this.state = {
-      // if no original data exists, set the object to empty
-      monsters: [],
-      filterText: '',
-    }
-    console.log('constructor')
+  //* Event Handler for filter input changes
+  const onSearchChange = (e) => {
+    const filterTextValue = e.target.value.toLocaleLowerCase()
+    setFiltertext(filterTextValue)
   }
 
-  componentDidMount() {
-    console.log('componentDidMount')
+  //* Fetch users from API
+  useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((resp) => resp.json())
-      .then((users) =>
-        this.setState(() => {
-          return {
-            ...this.state,
-            monsters: users,
-          }
-        })
-      )
-  }
+      .then((users) => setMonsters(users))
+  }, []) // empty dependency array because we only want this to run one time
 
-  // event listener method for text input in search field
-  addFilterText = (e) => {
-    this.setState(() => {
-      return {
-        ...this.state,
-        filterText: e.target.value,
-      }
-    })
-  }
-
-  render() {
-    console.log('render')
-    const { monsters, filterText } = this.state
-
-    const filteredMonsters = monsters.filter((monster) =>
-      monster.name.toLowerCase().includes(filterText.toLowerCase())
+  //* -- useEffect to limi filtering only when items related to monsters change
+  useEffect(() => {
+    const newFilteredMonsters = monsters.filter((monster) =>
+      monster.name.toLocaleLowerCase().includes(filterText)
     )
 
-    return (
-      <div className='App'>
-        <h1 className='main-title'>Monster's Rolodex</h1>
+    setFilterMonsters(newFilteredMonsters)
+  }, [monsters, filterText])
 
-        <FilterTextBox
-          type='search'
-          className='search-box'
-          placeholder='Search Monster'
-          onChangeHandler={this.addFilterText}
-        />
+  return (
+    <div className='App'>
+      <h1 className='main-title'>Monster's Rolodex</h1>
 
-        <CardList monsters={filteredMonsters} />
-      </div>
-    )
-  }
+      <FilterTextBox
+        type='search'
+        className='search-box'
+        placeholder='Search Monster'
+        onChangeHandler={onSearchChange}
+      />
+
+      <CardList monsters={filteredMonsters} />
+    </div>
+  )
 }
+
 export default App
