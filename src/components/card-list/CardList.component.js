@@ -1,4 +1,3 @@
-import { Component } from 'react'
 import MonsterCard from '../monster-card/MonsterCard'
 import './cardList.styles.css'
 

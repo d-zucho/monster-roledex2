@@ -1,4 +1,3 @@
-import { Component } from 'react'
 import './fileterTextbox.styles.css'
 
 const FilterTextBox = ({ onChangeHandler }) => {
